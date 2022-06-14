@@ -1,0 +1,104 @@
+<!doctype html>
+<html>
+
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+
+	<title>Talk Title</title>
+
+	<link rel="stylesheet" href="dist/reset.css">
+	<link rel="stylesheet" href="dist/reveal.css">
+	<link rel="stylesheet" href="dist/theme/pastel.css">
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+	<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/jpswalsh/academicons@1/css/academicons.min.css">
+	<!-- Theme used for syntax highlighted code -->
+	<link rel="stylesheet" href="plugin/highlight/zenburn.css">
+	<link rel="stylesheet" href="plugin/chalkboard/style.css">
+	<link rel="stylesheet" href="plugin/customcontrols/style.css">
+</head>
+
+<body>
+	<div class="reveal">
+		<div class="slides">
+			<section>
+				<article>
+					<h2 class="r-fit-text title">Talk Title</h2>
+					<hr>
+					<h3 class="title">Conference/Workshop Title</h3>
+					<footer style="padding-top: 2vw;">
+						<x-grid columns=4 ai="center">
+							<x-col>
+								<figure><img src="assets/intel-logo.svg" alt=""></figure>
+							</x-col>
+							<x-col class="transparent">
+								<p>Kelvin Lee</p>
+							</x-col>
+						</x-grid>
+					</footer>
+				</article>
+			</section>
+		</div>
+	</div>
+	<div id="slide-footer" class="footer">
+		<x-grid columns="3" ai="center">
+			<x-col class="transparent">
+				<small>Intel Accelerated Computing Systems and Graphics Group</small>
+			</x-col>
+			<x-col class="transparent">
+				<small>High Performance Computing &middot; End User Enablement</small>
+			</x-col>
+			<x-col class="transparent">
+				<small>Kelvin Lee</small>
+			</x-col>
+		</x-grid>
+	</div>
+
+	<script src="plugin/skelet/app.js"></script>
+	<script src="plugin/skelet/modules.js"></script>
+	<script src="dist/reveal.js"></script>
+	<script src="plugin/notes/notes.js"></script>
+	<script src="plugin/markdown/markdown.js"></script>
+	<script src="plugin/highlight/highlight.js"></script>
+	<script src="plugin/math/math.js"></script>
+	<script src="plugin/zoom/zoom.js"></script>
+	<script src="plugin/chalkboard/plugin.js"></script>
+	<script src="plugin/customcontrols/plugin.js"></script>
+	<script type="text/javascript">
+		window.addEventListener("load", function () {
+
+			revealDiv = document.querySelector("body div.reveal")
+			footer = document.getElementById("slide-footer");
+			revealDiv.appendChild(footer);
+
+		});
+	</script>
+	<!-- <script src="https://cdn.jsdelivr.net/npm/mermaid/dist/mermaid.min.js"></script>
+	<script>
+		mermaid.initialize({
+			startOnLoad: true,
+		});
+	</script> -->
+	<script>
+		// More info about initialization & config:
+		// - https://revealjs.com/initialization/
+		// - https://revealjs.com/config/
+		Reveal.initialize({
+			hash: true,
+			slideNumber: true,
+			transition: 'fade',
+			transitionSpeed: 'slow',
+			controlsLayout: 'edges',
+			viewDistance: 50,
+			preloadIframes: true,
+			plugins: [RevealChalkboard, RevealMarkdown, RevealHighlight, RevealNotes, RevealMath, RevealZoom],
+			chalkboard: {
+				chalkEffect: 0.1,
+				theme: "chalkboard"
+			}
+			// dependencies: [{ src: 'plugin/mermaid/mermaid.js' }]
+		});
+	</script>
+</body>
+
+</html>

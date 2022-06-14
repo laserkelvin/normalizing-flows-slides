@@ -1,0 +1,22 @@
+/**
+ * Minimalist theme for reveal.js.
+ * The goal here is to tie minimialistic typography and layouts
+ * with story telling, with a light color theme.
+ *
+ * By Kelvin Lee, 2022
+ */
+ @import url(minimalist.css);
+ section.has-dark-background, section.has-dark-background h1, section.has-dark-background h2, section.has-dark-background h3, section.has-dark-background h4, section.has-dark-background h5, section.has-dark-background h6 {
+   color: #fff; }
+
+.reveal-viewport {
+    background: #b7cec9;
+    background-color: #b7cec9; }
+
+.reveal {
+  color: #000
+}
+
+.footer {
+  color: #6f8f99
+}

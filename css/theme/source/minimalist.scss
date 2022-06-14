@@ -1,0 +1,104 @@
+/**
+ * Minimalist theme for reveal.js.
+ * The goal here is to tie minimialistic typography and layouts
+ * with story telling.
+ *
+ * By Kelvin Lee, 2021
+ */
+// Include skelet for framework
+@import "../template/skelet.css";
+// Default mixins and settings -----------------
+@import "../template/mixins";
+@import "../template/settings";
+// ---------------------------------------------
+
+
+// Include theme-specific fonts
+@import url(./fonts/source-sans-pro/source-sans-pro.css);
+@import url('https://fonts.googleapis.com/css2?family=Lato&display=swap');
+
+
+// Override theme settings (see ../template/settings.scss)
+$backgroundColor: #fff;
+
+$mainColor: #222;
+$headingColor: #222;
+
+
+$mainFontSize: calc(100vw / 75);
+$mainFont: 'Source Sans Pro', Helvetica, sans-serif;
+$headingFont: 'Lato', 'Source Sans Pro', Helvetica, sans-serif;
+$headingTextShadow: none;
+$headingLetterSpacing: normal;
+$headingTextTransform: normal;
+$headingFontWeight: 600;
+$linkColor: #2a76dd;
+$linkColorHover: lighten( $linkColor, 15% );
+$selectionBackgroundColor: lighten( $linkColor, 25% );
+
+$heading1Size: 10rem;
+$heading2Size: 7rem;
+$heading3Size: 5rem;
+$heading4Size: 4rem;
+
+// Change text colors against dark slide backgrounds
+@include dark-bg-text-color(#fff);
+
+// Theme template ------------------------------
+@import "../template/theme";
+// ---------------------------------------------
+
+html {
+    text-rendering: optimizeLegibility;
+    hyphens: none;
+}
+
+h1 {
+    text-transform: uppercase;
+}
+
+.logo {
+    max-width: 15vw;
+    margin: 0 auto;
+    opacity: 0.5;
+}
+
+.grid-image {
+    width: 10vw;
+    height: auto;
+}
+
+.person-figure {
+    width: 150px;
+    height: 150px;
+    overflow: hidden;
+    border-radius: 50%
+}
+
+.circular-landscape {
+    width: 15vw;
+    height: 15vw;
+    overflow: hidden;
+    border-radius: 50%
+}
+
+.circular-landscape img {
+    width: auto;
+    height: 100%;
+}
+
+.circular-square {
+    border-radius: 50%
+}
+
+.reveal img {
+    margin: 0 auto
+}
+
+figure figcaption {
+    padding-top: 30px
+}
+
+.reveal iframe {
+    height: 50vw
+}

@@ -1,0 +1,68 @@
+/**
+ * Minimalist theme for reveal.js.
+ * The goal here is to tie minimialistic typography and layouts
+ * with story telling, with a light color theme.
+ *
+ * https://coolors.co/87d6c2-084c61-db3a34-ffc857-323031
+ *
+ * By Kelvin Lee, 2022
+ */
+ @import url(minimalist.css);
+
+ :root {
+     --primary: #87D6C2;
+     --secondary: #DB3A34;
+     --tertiary: #084C61;
+     --quarternary: #FFC857;
+     --black: #323031;
+     --hrColor: var(--secondary);
+     --bgColor: var(--tertiary);
+     --codeColor: var(--secondary);
+     --col-block: var(--primary);
+ }
+
+ section.has-dark-background, section.has-dark-background h1, section.has-dark-background h2, section.has-dark-background h3, section.has-dark-background h4, section.has-dark-background h5, section.has-dark-background h6 {
+   color: #fff; }
+
+.reveal {
+    color: var(--quarternary)
+}
+
+.footer {
+  color: var(--primary);
+}
+
+x-col {
+    border-radius: var(--boxRadius);
+    background-color: var(--col-block);
+    color: var(--black)
+}
+
+figure {
+    border-radius: var(--boxRadius);
+    background-color: var(--col-block);
+    color: var(--black);
+    padding: 0.7vw;
+}
+
+.transparent {
+    background-color: transparent;
+    color: var(--primary)
+}
+
+.reveal pre code{
+    overflow: visible
+}
+
+code {
+    color: var(--tertiary)
+}
+
+.title {
+    background: inherit;
+    background-clip: text;
+    -webkit-background-clip: text;
+    color: transparent;
+    filter: invert(1) grayscale(1);
+    -webkit-filter: invert(1) grayscale(1);
+}
