@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Created with Inkscape (http://www.inkscape.org/) -->
+<svg width="236.27mm" height="116.43mm" version="1.1" viewBox="0 0 236.27 116.43" xmlns="http://www.w3.org/2000/svg">
+ <g transform="translate(-13.327 -25.872)">
+  <path d="m40.772 34.157v79.304l73.893-19.799v-39.066z" fill="#eca581"/>
+  <text x="60.359135" y="76.840332" font-family="Roboto" font-size="10.583px" stroke-width=".26458" style="line-height:1.25" xml:space="preserve"><tspan x="60.359135" y="76.840332" stroke-width=".26458"><tspan font-style="italic">q</tspan><tspan baseline-shift="sub" font-size="65%">θ</tspan>(<tspan font-style="italic">z</tspan> | <tspan font-style="italic">x</tspan>)</tspan></text>
+  <text x="54.166386" y="142.20036" font-family="Roboto" font-size="10.583px" stroke-width=".26458" style="line-height:1.25" xml:space="preserve"><tspan x="54.166386" y="142.20036" stroke-width=".26458">Encoder</tspan></text>
+  <rect x="13.327" y="25.872" width="17.975" height="96.335" ry="7.6364" fill="#f1e89f" opacity=".62201"/>
+  <text transform="rotate(-90)" x="-91.389404" y="25.751562" font-family="Roboto" font-size="10.583px" stroke-width=".26458" style="line-height:1.25" xml:space="preserve"><tspan x="-91.389404" y="25.751562" stroke-width=".26458">Data <tspan font-style="italic">x</tspan></tspan></text>
+  <g transform="translate(105.7 .79097)">
+   <path d="m114.66 113.46v-79.304l-73.893 19.799v39.066z" fill="#c26d93"/>
+   <text x="60.359135" y="76.840332" font-family="Roboto" font-size="10.583px" stroke-width=".26458" style="line-height:1.25" xml:space="preserve"><tspan x="60.359135" y="76.840332" stroke-width=".26458"><tspan font-style="italic">p</tspan><tspan baseline-shift="sub" font-size="65%">θ</tspan>(<tspan font-style="italic">x'</tspan> | <tspan font-style="italic">z</tspan>)</tspan></text>
+  </g>
+  <g transform="translate(-.98432)">
+   <rect x="124.26" y="41.606" width="14.59" height="62.724" ry="7.2952" fill="#de8687" opacity=".62201"/>
+   <text x="129.15471" y="77.000679" font-family="Roboto" font-size="10.583px" stroke-width=".26458" style="line-height:1.25" xml:space="preserve"><tspan x="129.15471" y="77.000679" font-style="italic" stroke-width=".26458">z</tspan></text>
+  </g>
+  <text x="166.3096" y="142.20036" font-family="Roboto" font-size="10.583px" stroke-width=".26458" style="line-height:1.25" xml:space="preserve"><tspan x="166.3096" y="142.20036" stroke-width=".26458">Decoder</tspan></text>
+  <g transform="translate(218.3)">
+   <rect x="13.327" y="25.872" width="17.975" height="96.335" ry="7.6364" fill="#5b53a3" opacity=".62201"/>
+   <text transform="rotate(-90)" x="-110.41247" y="25.751562" font-family="Roboto" font-size="10.583px" stroke-width=".26458" style="line-height:1.25" xml:space="preserve"><tspan x="-110.41247" y="25.751562" stroke-width=".26458">Reconstruction</tspan></text>
+  </g>
+ </g>
+</svg>

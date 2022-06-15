@@ -5,7 +5,7 @@
 	<meta charset="utf-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
 
-	<title>Talk Title</title>
+	<title>An Introduction to Normalizing Flows</title>
 
 	<link rel="stylesheet" href="dist/reset.css">
 	<link rel="stylesheet" href="dist/reveal.css">
@@ -23,20 +23,119 @@
 		<div class="slides">
 			<section>
 				<article>
-					<h2 class="r-fit-text title">Talk Title</h2>
+					<h2 class="r-fit-text title">An Introduction to Normalizing Flows</h2>
 					<hr>
-					<h3 class="title">Conference/Workshop Title</h3>
 					<footer style="padding-top: 2vw;">
-						<x-grid columns=4 ai="center">
-							<x-col>
-								<figure><img src="assets/intel-logo.svg" alt=""></figure>
-							</x-col>
+						<x-grid columns=2 ai="center">
 							<x-col class="transparent">
 								<p>Kelvin Lee</p>
+							</x-col>
+							<x-col>
+								<figure><img src="assets/intel-logo.svg" alt=""></figure>
 							</x-col>
 						</x-grid>
 					</footer>
 				</article>
+			</section>
+			<section>
+				<section>
+					<h2 class="title">Motivation</h2>
+					<p>Bayesian inference focuses on posterior inference based on Bayes' theorem</p>
+					<p>$p(B \vert A) = \frac{p(A \vert B) p(B)}{p(A)}$</p>
+					<div class="fragment">
+						<hr>
+						<p>Most (interesting) real-world phenomena have intractable posteriors, likelihoods, or evidence
+						</p>
+						<ul>
+							<li>No closed form integral: $\rho (r) = \langle \Psi \vert \hat{\rho}(r) \vert \Psi
+								\rangle$
+							</li>
+							<li>Deep recursion: $p(\mathrm{weather} \vert \mathrm{history})$</li>
+							<li>Multiple model/hypothesis testing: Bayesian evidence/Partition function $Z$</li>
+						</ul>
+					</div>
+				</section>
+				<section>
+					<h2 class="title">
+					</h2>
+					<figure>
+						<img src="assets/complexity.png" alt="">
+						<figcaption>
+							<p>Compromise between mechanistic understanding and
+								uncertainty paralysis</p>
+							<p class="fragment">Do you <em>really</em> care about the posterior, or do you just want to
+								sample from it?
+							</p>
+						</figcaption>
+					</figure>
+				</section>
+			</section>
+			<section>
+				<section>
+					<h2 class="title">Variational inference</h2>
+					<p>We care about the posterior&mdash;but only enough to approximate it</p>
+					<p>Turn posterior estimation into an <em>optimization</em> problem, instead of a sampling one</p>
+					<hr>
+					<div class="fragment">
+						<p>Optimize a surrogate model density $q(z)$ to approximate the true posterior $p(z
+							\vert x)$ for data $x$, latent variable $z$ by minimizing the KL-divergence</p>
+						<p>$q \rightarrow p$ when $\mathrm{arg~min}~\mathrm{KL}_{q(z) \vert \vert p(z \vert x)} =
+							\mathbb{E}[\log q(z)] - \mathbb{E}[\log p(z,
+							x)] + \log p(x)$</p>
+						<hr>
+					</div>
+					<div class="fragment">
+						<p>$\log p(x)$ is intractable but doesn't depend on $z$&mdash;so we drop it, flip the expression
+							and
+							call it the ELBO:</p>
+						<p>$\mathrm{ELBO}(q) = \mathbb{E}[\log p(z, x)] - \mathbb{E}[\log q(z)]$</p>
+					</div>
+					<footer>
+						<p><small><a href="https://arxiv.org/pdf/1601.00670.pdf">Blei, Kucukelbir, and McAculiffe
+									(2018)</a></small></p>
+					</footer>
+				</section>
+				<section>
+					<h2 class="title">Variational autoencoder</h2>
+					<figure>
+						<img src="assets/vae.png" alt="">
+						<figcaption>
+							<p>Learn approximate $q$&mdash;factorized by <em>simple</em> distributions&mdash;by
+								reconstructing data</p>
+						</figcaption>
+					</figure>
+				</section>
+				<section>
+					<h2 class="title">Variational autoencoder</h2>
+					<p>Approximation is limited by factorization:</p>
+					<p class="fragment">
+						Not many $p(x)$ is actually well-described by $q(z) \sim \mathcal{N}(\mu=0, \Sigma=1)$
+					</p>
+					<div class="fragment">
+						<figure>
+							<img src="assets/poor-fit.png" alt="">
+						</figure>
+						<hr>
+					</div>
+					<x-grid class="fragment transparent" columns="2" ai="center">
+						<x-col>
+							<p>Multimodal</p>
+						</x-col>
+						<x-col>
+							<p>Not normally distributed</p>
+						</x-col>
+					</x-grid>
+				</section>
+			</section>
+			<section>
+				<h2 class="title">References</h2>
+				<ul>
+					<li><a href="https://lilianweng.github.io/posts/2018-10-13-flow-models/">Lilian Weng's blog post on
+							flow models</a></li>
+					<li><a href="https://arxiv.org/pdf/1908.09257.pdf">Review by Kobyzev <em>et al.</em></a></li>
+					<li><a href="https://arxiv.org/pdf/1601.00670.pdf">Variational inference: A review for
+							statisticians</a></li>
+				</ul>
 			</section>
 		</div>
 	</div>

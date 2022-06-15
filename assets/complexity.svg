@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Created with Inkscape (http://www.inkscape.org/) -->
+<svg width="243.7mm" height="48.029mm" version="1.1" viewBox="0 0 243.7 48.029" xmlns="http://www.w3.org/2000/svg">
+ <defs>
+  <marker id="Arrow1" overflow="visible" markerHeight="6.7071066" markerWidth="4.0606604" orient="auto-start-reverse" preserveAspectRatio="xMidYMid" viewBox="0 0 4.0606602 6.7071068">
+   <path transform="rotate(180 .125 0)" d="m3-3-3 3 3 3" fill="none" stroke="context-stroke"/>
+  </marker>
+ </defs>
+ <g transform="translate(39.356 -10.23)">
+  <path d="m203.25 41.833h-242.6" fill="none" marker-start="url(#Arrow1)" stroke="#000" stroke-width="1.1456"/>
+  <g font-family="Roboto" font-size="10.583px" stroke-width=".26458">
+   <text x="36.080002" y="56.00032" style="line-height:1.25" xml:space="preserve"><tspan x="36.080002" y="56.00032" stroke-width=".26458">Computational cost</tspan></text>
+   <text x="111.34065" y="20.270515" fill="#c26d93" style="line-height:1.25" xml:space="preserve"><tspan x="111.34065" y="20.270515">MCMC</tspan><tspan x="111.34065" y="33.499641">HMC</tspan></text>
+   <text x="160.46542" y="18.167294" fill="#5b53a3" style="line-height:1.25" xml:space="preserve"><tspan x="160.46542" y="18.167294">Nested</tspan><tspan x="160.46542" y="31.396418">sampling</tspan></text>
+   <text x="44.75964" y="20.270515" fill="#eca581" style="line-height:1.25" xml:space="preserve"><tspan x="44.75964" y="20.270515">Variational</tspan><tspan x="44.75964" y="33.499641">inference</tspan></text>
+   <text x="-39.091583" y="20.270515" fill="#f1e89f" style="line-height:1.25" xml:space="preserve"><tspan x="-39.091583" y="20.270515">Kernel density</tspan><tspan x="-39.091583" y="33.499641">estimation</tspan></text>
+  </g>
+ </g>
+</svg>

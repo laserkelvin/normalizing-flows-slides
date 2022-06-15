@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Created with Inkscape (http://www.inkscape.org/) -->
+<svg width="139.83mm" height="67.824mm" version="1.1" viewBox="0 0 139.83 67.824" xmlns="http://www.w3.org/2000/svg">
+ <g transform="translate(-46.859 -9.6178)">
+  <path d="m46.921 76.797c15.951 0 31.901 0 43.163-13.289 11.262-13.289 17.835-39.865 24.401-39.898 6.5656-0.03317 13.123 26.476 25.156 39.731 12.034 13.255 29.543 13.255 47.052 13.255" fill="none" stroke="#f1e89f" stroke-width="1.152"/>
+  <path d="m46.859 76.272c8.0084 0 16.016 0 21.445-5.3162 5.4284-5.3162 8.2773-15.948 11.114-15.995 2.8365-0.04673 5.6602 10.492 12.36 15.761 6.6994 5.2691 17.274 5.2691 25.645-6.2412 8.3713-11.51 14.539-34.53 20.744-34.393 6.205 0.1368 12.446 23.43 20.455 35.076 8.0091 11.646 17.785 11.646 27.561 11.646" fill="none" stroke="#5b53a3" stroke-width="1.265"/>
+  <text x="79.621323" y="21.127846" font-family="Roboto" font-size="10.583px" stroke-width=".26458" style="line-height:1.25" xml:space="preserve"><tspan x="79.621323" y="21.127846" fill="#f1e89f" stroke-width=".26458"><tspan font-style="italic">q</tspan>(<tspan font-style="italic">z <tspan font-style="normal">|</tspan> x</tspan>)</tspan></text>
+  <text x="158.72234" y="47.83667" font-family="Roboto" font-size="10.583px" stroke-width=".26458" style="line-height:1.25" xml:space="preserve"><tspan x="158.72234" y="47.83667" stroke-width=".26458"><tspan fill="#5b53a3" font-style="italic">p</tspan>(<tspan fill="#5b53a3" font-style="italic">x</tspan>)</tspan></text>
+ </g>
+</svg>
