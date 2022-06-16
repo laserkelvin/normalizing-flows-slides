@@ -45,6 +45,10 @@ figure {
     padding: 0.7vw;
 }
 
+.reveal figcaption a {
+    color: var(--black)
+}
+
 .transparent {
     background-color: transparent;
     color: var(--primary)
@@ -66,3 +70,4 @@ code {
     filter: invert(1) grayscale(1);
     -webkit-filter: invert(1) grayscale(1);
 }
+

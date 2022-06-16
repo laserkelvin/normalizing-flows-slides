@@ -179,7 +179,7 @@
 								Planar flows: $f(x) = x + \mathbf{u}h(\mathbf{w}^Tx + b)$
 							</li>
 							<li>
-								Autoregressive flows: $$
+								Autoregressive flows: $f(x;t) = \tau(c(x;t-1), x; t)$
 							</li>
 						</ul>
 					</div>
@@ -195,6 +195,105 @@
 							<p><a href="https://lilianweng.github.io/posts/2018-10-13-flow-models/"
 									style="color: #000">Lilian Weng's blog
 									post</a></p>
+						</figcaption>
+					</figure>
+				</section>
+				<section>
+					<figure>
+						<img src="assets/normalizing-flow.png" alt="" style="max-height: 500px">
+						<figcaption>
+							<p>Transform initial diagonal Gaussian into discontinuous, multimodal density</p>
+							<p><a href="https://proceedings.mlr.press/v37/rezende15.pdf" style="color: #000">Rezende &
+									Mohamed, 2015</a></p>
+						</figcaption>
+					</figure>
+				</section>
+				<section>
+					<h2 class="title">Continuous normalizing flows</h2>
+					<x-grid columns="3" ai="center">
+						<x-col>
+							<p>Previous definition uses discrete neural network layers to chain a sequence of
+								transformations
+							</p>
+							<p>Reframe as a neural network with continuous depth&mdash;a differential equation</p>
+							<p>Example is <span style="font-variant: small-caps;">FFJORD</span>, which includes linear
+								time log density estimation</p>
+						</x-col>
+						<x-col span="2+2">
+							<figure><img src="assets/ffjord.png" alt="" style="max-height: 400px">
+								<figcaption>
+									<p><a style="color: #000" href="https://arxiv.org/pdf/1810.01367.pdf">Grathwohl,
+											Chen, Bettencourt,
+											Sutskever, and Duvenaud (2018)</a></p>
+								</figcaption>
+							</figure>
+						</x-col>
+					</x-grid>
+				</section>
+				<section>
+					<h2 class="title">Optimal transport</h2>
+					<x-grid columns="4" ai="center">
+						<x-col span="1+2">
+							<p>Normalizing flows typically conditioned by maximizing log likelihood via minimizing
+								KL-divergence
+							</p>
+							<br>
+							<p>Reduce time complexity in the integrator <em>and</em> add expressiveness by reformulating
+								within an optimal transport and control theory framework</p>
+							<br>
+							<p class="fragment" data-fragment-index="1">
+								Add an $L_2$ transport cost term to log likelihood: $L(x,T) = \int^T_0 \frac{1}{2}
+								\| \mathbf{v}(z(x,t), t) \|^2~dt $
+							</p>
+							<p class="fragment" data-fragment-index="1">
+								$\mathbf{v}$ expressed as $-\nabla \Phi$, and satifies Hamilton-Jacobi-Bellman
+								equations. $\Phi$ parameterized as a ResNet.
+							</p>
+						</x-col>
+						<x-col span="3+2">
+							<figure>
+								<img style="max-height: 400px" src="assets/ot-flow.png" alt="">
+								<figcaption>
+									<p><a style="color: #000" href="https://arxiv.org/pdf/2006.00104.pdf">Onken, Fung,
+											Li, and Ruthotto
+											(2021)</a></p>
+								</figcaption>
+							</figure>
+						</x-col>
+					</x-grid>
+				</section>
+			</section>
+			<section>
+				<section>
+					<h2 class="title">Diffusion models</h2>
+					<p>Flow models are restricted by form of $f$&mdash;requirements on invertibility and
+						$\mathrm{det}~\mathbf{J}$</p>
+					<div class="fragment">
+						<hr>
+						<p>Alternatively, frame density estimation as a difussion process</p>
+						<p>
+							For $x_0 \sim p(x)$, forward diffusion means adding Gaussian noise over $T$ timesteps
+						</p>
+						<p class="fragment" data-fragment-index="2">
+							$p(x_t \vert x_{t-1}) = \mathcal{N}(x_t; \sqrt{1 - \beta_t}x_{t-1},\beta_t \mathbf{I})$,
+							$\{\beta \in (0, 1)\}^T_{t=1}$
+						</p>
+						<br class="fragment" data-fragment-index="2">
+						<p class="fragment" data-fragment-index="3">
+							$p(x_{1:T} \vert x_0) = \prod^T_{t=1} p(x_t \vert x_{t-1})$
+						</p>
+						<p class="fragment" data-fragment-index="3">
+							$T \rightarrow \infty, x_T \sim \mathcal{N}(\mu, \sigma^2 \mathbf{I})$
+						</p>
+					</div>
+					<footer><small><a href="https://www.stats.ox.ac.uk/~teh/research/compstats/WelTeh2011a.pdf">Welling
+								and Teh, (2011)</a></small></footer>
+				</section>
+				<section>
+					<figure>
+						<img src="assets/diffusion-dag.png" alt="">
+						<figcaption>
+							<p><a href="https://arxiv.org/pdf/2006.11239.pdf">Ho, Jain, and Abbeel (2020)</a></p>
 						</figcaption>
 					</figure>
 				</section>
