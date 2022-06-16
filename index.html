@@ -23,7 +23,7 @@
 		<div class="slides">
 			<section>
 				<article>
-					<h2 class="r-fit-text title">An Introduction to Normalizing Flows</h2>
+					<h2 class="r-fit-text title">Density, Flow, and Diffusion</h2>
 					<hr>
 					<footer style="padding-top: 2vw;">
 						<x-grid columns=2 ai="center">
@@ -41,7 +41,7 @@
 				<section>
 					<h2 class="title">Motivation</h2>
 					<p>Bayesian inference focuses on posterior inference based on Bayes' theorem</p>
-					<p>$p(B \vert A) = \frac{p(A \vert B) p(B)}{p(A)}$</p>
+					<p>$p(z \vert x) = \frac{p(x \vert z) p(z)}{p(x)}$</p>
 					<div class="fragment">
 						<hr>
 						<p>Most (interesting) real-world phenomena have intractable posteriors, likelihoods, or evidence
@@ -130,8 +130,73 @@
 			<section>
 				<section>
 					<h2 class="title">Normalizing flows</h2>
-					<p>Instead of approximating $p$, we could try model it through a series of invertible
-						transformations</p>
+					<x-grid columns="2" ai="top">
+						<x-col>
+							<p>Instead of approximating $p$, we could try model it through a series of invertible
+								transformations</p>
+							<p class="fragment" data-fragment-index="1">
+								Create a <em>invertible</em> bijective (1:1) mapping from one random variable to
+								another, along with its probability density
+							</p>
+							<p class="fragment" data-fragment-index="3">
+								Change of variable theorem&mdash;convert densities
+							</p>
+						</x-col>
+						<x-col class="transparent">
+							<p class="fragment" data-fragment-index="2">
+								$z = f(x)$ and the inverse $x = f^{-1}(z)$
+							</p>
+							<p class="fragment" data-fragment-index="2">
+								$\int q(z)~dz = \int p(x)~dx = 1$
+							</p>
+							<br class="fragment" data-fragment-index="2">
+							<p class="fragment" data-fragment-index="3">
+								$p(x) = q(z) \left \lvert \frac{dz}{dx} \right \rvert$
+							</p>
+							<p class="fragment" data-fragment-index="4">
+								Alternatively and more preferably: $p(x) = p(f^{-1}(z)) \left \lvert \mathrm{det}
+								\frac{d f^{-1}}{dx} \right
+								\rvert $
+							</p>
+						</x-col>
+					</x-grid>
+					<hr class="fragment" data-fragment-index="5">
+					<p class="fragment" data-fragment-index="5">Path between $q(z)
+						\leftrightarrow p(x)$ is a flow&mdash;successive transformations that preserve normalization are
+						a normalizing flow</p>
+				</section>
+				<section>
+					<h2 class="title">What makes a normalizing flow?</h2>
+					<p>Main criteria is that $f$ must be invertible and differentiable; $\mathrm{det}~\mathbf{J} \neq 0$
+					</p>
+					<div class="fragment">
+						<hr>
+						<ul>
+							<li>
+								Linear flows: $f(x) = \mathbf{A}x + b$; $f(x) = \mathbf{PLU}x + b$
+							</li>
+							<li>
+								Planar flows: $f(x) = x + \mathbf{u}h(\mathbf{w}^Tx + b)$
+							</li>
+							<li>
+								Autoregressive flows: $$
+							</li>
+						</ul>
+					</div>
+					<footer><small><a href="https://arxiv.org/pdf/1505.05770.pdf">Rezende and Mohamed</a></small>
+					</footer>
+				</section>
+				<section>
+					<h2 class="title">Normalizing flows</h2>
+					<figure>
+						<img src="https://lilianweng.github.io/posts/2018-10-13-flow-models/normalizing-flow.png"
+							alt="">
+						<figcaption>
+							<p><a href="https://lilianweng.github.io/posts/2018-10-13-flow-models/"
+									style="color: #000">Lilian Weng's blog
+									post</a></p>
+						</figcaption>
+					</figure>
 				</section>
 			</section>
 			<section>
@@ -142,6 +207,8 @@
 					<li><a href="https://arxiv.org/pdf/1908.09257.pdf">Review by Kobyzev <em>et al.</em></a></li>
 					<li><a href="https://arxiv.org/pdf/1601.00670.pdf">Variational inference: A review for
 							statisticians</a></li>
+					<li><a href="https://arxiv.org/pdf/1505.05770.pdf">Variational inference with Normalizing Flows</a>
+					</li>
 				</ul>
 			</section>
 		</div>
