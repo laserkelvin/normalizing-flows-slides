@@ -274,15 +274,15 @@
 						<p>
 							For $x_0 \sim p(x)$, forward diffusion means adding Gaussian noise over $T$ timesteps
 						</p>
-						<p class="fragment" data-fragment-index="2">
+						<p>
 							$p(x_t \vert x_{t-1}) = \mathcal{N}(x_t; \sqrt{1 - \beta_t}x_{t-1},\beta_t \mathbf{I})$,
 							$\{\beta \in (0, 1)\}^T_{t=1}$
 						</p>
-						<br class="fragment" data-fragment-index="2">
-						<p class="fragment" data-fragment-index="3">
+						<br>
+						<p>
 							$p(x_{1:T} \vert x_0) = \prod^T_{t=1} p(x_t \vert x_{t-1})$
 						</p>
-						<p class="fragment" data-fragment-index="3">
+						<p>
 							$T \rightarrow \infty, x_T \sim \mathcal{N}(\mu, \sigma^2 \mathbf{I})$
 						</p>
 					</div>
@@ -294,8 +294,91 @@
 						<img src="assets/diffusion-dag.png" alt="">
 						<figcaption>
 							<p><a href="https://arxiv.org/pdf/2006.11239.pdf">Ho, Jain, and Abbeel (2020)</a></p>
+							<p>Left-to-right is the <em>reverse</em> diffusion process; start from $\mathcal{N}(\mu,
+								\sigma^2 \mathbf{I}) \rightarrow p(x)$</p>
+							<p>Similar action to GAN's: generate sample from noise</p>
 						</figcaption>
 					</figure>
+				</section>
+				<section>
+					<x-grid columns="2" ai="top">
+						<x-col>
+							<h3>Forward process</h3>
+							<p>Start with data $x_0$, and two time dependent variables $\beta_t$ and $\alpha_t = 1 -
+								\beta_t$; $\bar{\alpha}_t = \prod_{i=1}^T \alpha_i$</p>
+							<p>$q(x_t \vert x_0) = \mathcal{N}(x_t ; \sqrt{\bar{\alpha}_t}x_0, (1 - \bar{\alpha}_t)
+								\mathbf{I})$</p>
+							<br>
+							<p class="fragment" data-fragment-index="1">
+								Given $x_0$, can sample $x_t$ for arbitrary $t$
+							</p>
+						</x-col>
+						<x-col>
+							<h3>Reverse process</h3>
+							<p>Start from isotropic Gaussian noise, $x_T \sim \mathcal{N}(0, \mathbf{I})$</p>
+							<p>Use $p_\theta(x_{t-1} \vert x_t) = \mathcal{N}(x_{t-1}; \mu_\theta(x_t, t),
+								\Sigma_\theta(x_t, t))$</p>
+							<p>Parameterized conditional $\mu_\theta$ and $\Sigma_\theta$</p>
+							<br>
+							<p class="fragment" data-fragment-index="1">
+								Can train a model to sequentially remove noise
+							</p>
+						</x-col>
+					</x-grid>
+					<p class="fragment">
+						Maximize lower bound for training: $\mathbb{E}_{q(x_{0:T})} \left[ \log
+						\frac{q(x_{1:T} \vert x_0)}{p_\theta (x_{0:T})} \right] \geq -\mathbb{E}_{q(x_0)} \log p_\theta
+						(x_0)$
+					</p>
+				</section>
+				<section>
+					<h2 class="title">Advantages</h2>
+					<ul>
+						<li>Closed-form Markov sampling in the forward process (sampling from Gaussians)</li>
+						<li>Closed-form likelihood (KL-divergence between Gaussians)</li>
+						<li>Convergent&mdash;compared to adversarial training</li>
+					</ul>
+					<p>Main weakness is slow training/inference: typically need very long Markov chains for convergence
+					</p>
+				</section>
+				<section>
+					<h2 class="title">Conformer generation</h2>
+					<p>A molecular graph $G$ where nodes represent atom positions in 3D space with chiral tags $z \in
+						\{D,
+						L\}^k$ for a given unique set of internal coordinates (bonds/angles/dihedrals) $L \in
+						\mathcal{L}_G$</p>
+					<p>A conformer is a graph that is equivalent under rotation; $SE(3): c = \{g(x) \vert g \in SE(3)\}$
+					</p>
+					<p>Torsional diffusion acts on <em>fixed</em> space of $G, z, L$ with dihedral angles subtended by
+						plane
+						defined by four atoms $ABCD$</p>
+					<p class="fragment" data-fragment-index="1">Chirality and connectivity is fixed, only permitted
+						actions are relative atom
+						positions</p>
+					<p class="fragment" data-fragment-index="2">
+						Lie group $SO(2)$ acts on space $\mathcal{C}_G$, with an irreducible set of $m$
+						<em>localized</em> rotations (i.e. rotate one bond at a time)
+					</p>
+				</section>
+				<section>
+					<h2 class="title">Torsion diffusion</h2>
+					<p>Logical flow is $G, z, L \rightarrow SO(2) \rightarrow \mathbb{T}^m$ for $m$ rotatable bonds</p>
+					<p>Diffusion within torus $T \in \mathbb{T}^m$ maps 1:1 to diffusion within
+						conformer group $\mathcal{C}_G$</p>
+					<br>
+					<p class="fragment" data-fragment-index="1">Need an energy based model, $s_\theta(x, t)$, to score
+						torus diffusion with
+						$SE(3)$ equivariance assuming no parity violation</p>
+					<p class="fragment" data-fragment-index="2">
+						Treat torus diffusion as Brownian diffusion with $p \left(x_t \vert x_0 \right) \propto
+						\sum^\infty_{\mathbf{d} \in \mathcal{Z}^m} \exp \left(\frac{\| x_t - x_0 + 2\pi \mathbf{d}
+						\|^2}{2
+						\sigma^2_t} \right)$
+					</p>
+					<hr class="fragment" data-fragment-index="3">
+					<p class="fragment" data-fragment-index="3">
+						Conformer samples generated via reverse diffusion starting from random points on $\mathbb{T}^m$
+					</p>
 				</section>
 			</section>
 			<section>
@@ -308,6 +391,10 @@
 							statisticians</a></li>
 					<li><a href="https://arxiv.org/pdf/1505.05770.pdf">Variational inference with Normalizing Flows</a>
 					</li>
+					<li><a href="https://openreview.net/pdf?id=D9IxPlXPJJS">Torsional Diffusion for Molecular Conformer
+							Generation</a></li>
+					<li><a href="https://arxiv.org/pdf/1907.05600.pdf">Generative Modeling by Estimating Gradients of
+							the Data Distribution</a></li>
 				</ul>
 			</section>
 		</div>
